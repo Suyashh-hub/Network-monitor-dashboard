@@ -31,3 +31,14 @@ python3 app.py
 * SSH monitoring
 * CPU/RAM usage
 # Network-monitor-dashboard
+## Current Status
+
+Phase 1 Complete ✅
+
+* Basic network monitoring working
+* Dashboard UI created
+
+Next:
+
+* SSH monitoring
+* CPU / RAM tracking
