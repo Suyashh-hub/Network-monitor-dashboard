@@ -1,0 +1,5 @@
+[
+  {"name": "Localhost", "ip": "127.0.0.1"},
+  {"name": "Google DNS", "ip": "8.8.8.8"},
+  {"name": "Cloudflare", "ip": "1.1.1.1"}
+]

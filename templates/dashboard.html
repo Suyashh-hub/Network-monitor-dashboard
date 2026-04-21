@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Dashboard</title>
+</head>
+<body>
+
+<h1>Network Monitoring Dashboard</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Name</th>
+        <th>IP Address</th>
+        <th>Status</th>
+    </tr>
+
+    {% for d in devices %}
+    <tr>
+        <td>{{ d.name }}</td>
+        <td>{{ d.ip }}</td>
+        <td>
+            {% if d.status == "UP" %}
+                <span style="color:green;">UP</span>
+            {% else %}
+                <span style="color:red;">DOWN</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
