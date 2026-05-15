@@ -1,34 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Network Dashboard</title>
+    <title>Network Monitoring Dashboard</title>
 </head>
+
 <body>
 
-<h1>Network Monitoring Dashboard</h1>
+    <h1>Network Monitoring Dashboard</h1>
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>Name</th>
-        <th>IP Address</th>
-        <th>Status</th>
-    </tr>
+    <table border="1" cellpadding="10">
 
-    {% for d in devices %}
-    <tr>
-        <td>{{ d.name }}</td>
-        <td>{{ d.ip }}</td>
-        <td>
-            {% if d.status == "UP" %}
-                <span style="color:green;">UP</span>
-            {% else %}
-                <span style="color:red;">DOWN</span>
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
+        <tr>
+            <th>Name</th>
+            <th>IP Address</th>
+            <th>Status</th>
+            <th>CPU Usage</th>
+            <th>RAM Usage</th>
+            <th>Disk Usage</th>
+            <th>Error</th>
+        </tr>
 
-</table>
+        {% for d in devices %}
+
+        <tr>
+
+            <td>{{ d.name }}</td>
+
+            <td>{{ d.ip }}</td>
+
+            <td>
+
+                {% if d.status == "UP" %}
+
+                <span style="color: green;">
+                    UP
+                </span>
+
+                {% else %}
+
+                <span style="color: red;">
+                    DOWN
+                </span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+                {{ d.cpu if d.cpu else "-" }}
+            </td>
+
+            <td>
+                {{ d.ram if d.ram else "-" }}
+            </td>
+
+            <td>
+                {{ d.disk if d.disk else "-" }}
+            </td>
+
+            <td>
+                {{ d.error if d.error else "-" }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
 
 </body>
+
 </html>
