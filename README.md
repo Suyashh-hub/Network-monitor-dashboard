@@ -1,44 +1,90 @@
 # Network Monitoring Dashboard
 
-This project monitors network devices and shows their status (UP/DOWN) using Python and Flask.
+A Python + Flask based Network and Server Monitoring Dashboard built using Linux (WSL), Flask, Paramiko, and GitHub.
 
 ## Features
 
-* Ping devices
-* Show status in browser
-* Simple dashboard
+* Device status monitoring using ping
+* SSH-based Linux server monitoring
+* CPU usage monitoring
+* RAM usage monitoring
+* Disk usage monitoring
+* Flask web dashboard
+* JSON-based device configuration
+* Real-time monitoring architecture
 
-## Tech Stack
+## Technologies Used
 
 * Python
 * Flask
-* Linux (WSL)
+* Paramiko
+* Linux / Ubuntu WSL
+* Git & GitHub
+* HTML
+* JSON
+
+## Project Structure
+
+network-monitor/
+│
+├── app.py
+├── monitor.py
+├── devices.json
+├── requirements.txt
+├── templates/
+│ └── dashboard.html
+├── venv/
+└── README.md
 
 ## How to Run
 
+### Clone Repository
+
 ```bash
-pip install flask
+git clone https://github.com/Suyashh-hub/Network-monitor-dashboard.git
+cd Network-monitor-dashboard
+```
+
+### Create Virtual Environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run Application
+
+```bash
 python3 app.py
 ```
 
-## Example Devices
+Open browser:
 
-* 127.0.0.1 (Localhost)
-* 8.8.8.8 (Google DNS)
+```text
+http://127.0.0.1:5000
+```
 
-## Future Work
+## Current Features Completed
 
-* SSH monitoring
-* CPU/RAM usage
-# Network-monitor-dashboard
-## Current Status
+* Phase 1: Basic Flask Dashboard
+* Phase 2: SSH-Based Linux Monitoring
 
-Phase 1 Complete ✅
+## Upcoming Features
 
-* Basic network monitoring working
-* Dashboard UI created
+* Auto refresh dashboard
+* Beautiful UI
+* Graphs and charts
+* Email alerts
+* Real-time monitoring
+* Cloud deployment
 
-Next:
+## Author
 
-* SSH monitoring
-* CPU / RAM tracking
+Suyash Nandeshwar
+
