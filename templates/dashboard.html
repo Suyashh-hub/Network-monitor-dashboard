@@ -1,73 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+<meta http-equiv="refresh" content="5">
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Network Monitoring Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
 </head>
 
-<body>
+<body class="bg-dark text-light">
 
-    <h1>Network Monitoring Dashboard</h1>
+<div class="container mt-5">
 
-    <table border="1" cellpadding="10">
+    <h1 class="text-center mb-5">
+        🚀 Network Monitoring Dashboard
+    </h1>
 
-        <tr>
-            <th>Name</th>
-            <th>IP Address</th>
-            <th>Status</th>
-            <th>CPU Usage</th>
-            <th>RAM Usage</th>
-            <th>Disk Usage</th>
-            <th>Error</th>
-        </tr>
+    <!-- Summary Cards -->
+    <div class="row mb-4">
 
-        {% for d in devices %}
+        <div class="col-md-4">
+            <div class="card bg-primary text-white shadow">
+                <div class="card-body">
+                    <h5>Total Devices</h5>
+                    <h2>{{ devices|length }}</h2>
+                </div>
+            </div>
+        </div>
 
-        <tr>
+        <div class="col-md-4">
+            <div class="card bg-success text-white shadow">
+                <div class="card-body">
+                    <h5>Devices UP</h5>
 
-            <td>{{ d.name }}</td>
+                    <h2>
+                        {{
+                            devices
+                            | selectattr("status", "equalto", "UP")
+                            | list
+                            | length
+                        }}
+                    </h2>
 
-            <td>{{ d.ip }}</td>
+                </div>
+            </div>
+        </div>
 
-            <td>
+        <div class="col-md-4">
+            <div class="card bg-danger text-white shadow">
+                <div class="card-body">
+                    <h5>Devices DOWN</h5>
 
-                {% if d.status == "UP" %}
+                    <h2>
+                        {{
+                            devices
+                            | selectattr("status", "equalto", "DOWN")
+                            | list
+                            | length
+                        }}
+                    </h2>
 
-                <span style="color: green;">
-                    UP
-                </span>
+                </div>
+            </div>
+        </div>
 
-                {% else %}
+    </div>
 
-                <span style="color: red;">
-                    DOWN
-                </span>
+    <!-- Monitoring Table -->
 
-                {% endif %}
+    <div class="card shadow">
 
-            </td>
+        <div class="card-body bg-secondary">
 
-            <td>
-                {{ d.cpu if d.cpu else "-" }}
-            </td>
+            <table class="table table-dark table-striped table-hover align-middle">
 
-            <td>
-                {{ d.ram if d.ram else "-" }}
-            </td>
+                <thead>
 
-            <td>
-                {{ d.disk if d.disk else "-" }}
-            </td>
+                    <tr>
+                        <th>Name</th>
+                        <th>IP Address</th>
+                        <th>Status</th>
+                        <th>CPU</th>
+                        <th>RAM</th>
+                        <th>Disk</th>
+                        <th>Error</th>
+                    </tr>
 
-            <td>
-                {{ d.error if d.error else "-" }}
-            </td>
+                </thead>
 
-        </tr>
+                <tbody>
 
-        {% endfor %}
+                {% for d in devices %}
 
-    </table>
+                    <tr>
+
+                        <td>{{ d.name }}</td>
+
+                        <td>{{ d.ip }}</td>
+
+                        <td>
+
+                            {% if d.status == "UP" %}
+
+                                <span class="badge bg-success">
+                                    UP
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+                                    DOWN
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>{{ d.cpu if d.cpu else "-" }}</td>
+
+                        <td>{{ d.ram if d.ram else "-" }}</td>
+
+                        <td>{{ d.disk if d.disk else "-" }}</td>
+
+                        <td>{{ d.error if d.error else "-" }}</td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 

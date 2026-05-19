@@ -2,6 +2,10 @@
 
 A Python + Flask based Network and Server Monitoring Dashboard built using Linux (WSL), Flask, Paramiko, and GitHub.
 
+## Dashboard Preview
+
+![Dashboard Screenshot](screenshots/dashboard.png)
+
 ## Features
 
 * Device status monitoring using ping

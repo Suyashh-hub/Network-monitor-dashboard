@@ -3,7 +3,7 @@
     "name": "Local Ubuntu Server",
     "ip": "127.0.0.1",
     "username": "suyash",
-    "password": "your-real-password"
+    "password": "suyash"
   },
   {
     "name": "Google DNS",
