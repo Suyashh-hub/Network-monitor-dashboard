@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import json
-
+from datetime import datetime
 from monitor import (
     ping_host,
     get_server_stats
@@ -43,11 +43,13 @@ def dashboard():
 
         results.append(device_data)
 
+    current_time = datetime.now().strftime("%I:%M:%S %p")
+
     return render_template(
         "dashboard.html",
-        devices=results
+        devices=results,
+        current_time=current_time
     )
-
 
 if __name__ == "__main__":
     app.run(debug=True)
