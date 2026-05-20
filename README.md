@@ -4,7 +4,7 @@ A Python + Flask based Network and Server Monitoring Dashboard built using Linux
 
 ## Dashboard Preview
 
-![Dashboard Screenshot](screenshots/dashboard.png)
+![Dashboard Screenshot](screenshot/dashboard.png)
 
 ## Features
 
