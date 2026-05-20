@@ -200,15 +200,44 @@ const labels = [
     {% endfor %}
 ];
 
+const commonOptions = {
+    responsive: true,
+    plugins: {
+        legend: {
+            labels: {
+                color: 'white'
+            }
+        }
+    },
+    scales: {
+        x: {
+            ticks: {
+                color: 'white'
+            }
+        },
+        y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+                color: 'white'
+            }
+        }
+    }
+};
+
 new Chart(document.getElementById('cpuChart'), {
     type: 'bar',
     data: {
         labels: labels,
         datasets: [{
             label: 'CPU %',
-            data: cpuData
+            data: cpuData,
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
         }]
-    }
+    },
+    options: commonOptions
 });
 
 new Chart(document.getElementById('ramChart'), {
@@ -217,9 +246,13 @@ new Chart(document.getElementById('ramChart'), {
         labels: labels,
         datasets: [{
             label: 'RAM %',
-            data: ramData
+            data: ramData,
+            backgroundColor: 'rgba(75, 192, 192, 0.7)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
         }]
-    }
+    },
+    options: commonOptions
 });
 
 new Chart(document.getElementById('diskChart'), {
@@ -228,10 +261,38 @@ new Chart(document.getElementById('diskChart'), {
         labels: labels,
         datasets: [{
             label: 'Disk %',
-            data: diskData
+            data: diskData,
+            backgroundColor: 'rgba(255, 159, 64, 0.7)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1
         }]
-    }
+    },
+    options: commonOptions
 });
+
+</script>
+<script>
+
+let downServers = [];
+
+{% for d in devices %}
+
+    {% if d.status == "DOWN" %}
+
+        downServers.push("{{ d.name }}");
+
+    {% endif %}
+
+{% endfor %}
+
+if (downServers.length > 0) {
+
+    alert(
+        "⚠️ ALERT!\n\nDOWN Servers:\n\n"
+        + downServers.join("\n")
+    );
+
+}
 
 </script>
 </body>
